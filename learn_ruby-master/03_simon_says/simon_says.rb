@@ -9,8 +9,14 @@ def shout(message)
 end
 
 def repeat(message, num = 2)
-
-    num.times do
-      message
+if num == 2
+      message + " " + message
+else
+    i = 0
+    while(i < num) do
+      message = message + " "
+      i = i + 1
     end
+    return message
+end
 end
