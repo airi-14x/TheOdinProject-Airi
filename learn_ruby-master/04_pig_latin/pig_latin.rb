@@ -52,48 +52,45 @@ end
 
 # More than one word to translate #
 else
-  puts "Number of words?"
-  puts num_words
-  current_word_number = 0
-  current_word = []
-  more_than_one = false # Reset
-  one_vowel = 0
-  more_words_arr2 = more_words_arr
+  words_arr = words.split(" ") # A word at each index
+  current_word_index = 0
+  current_word_letters = []
+  new_words_arr = []
+  # Stop when we complete iterating through all the letters of the word #
+  while current_word_index < num_words do
 
-  # Currently translating a word #
-  while current_word_number < num_words do
-    current_word = more_words_arr2[current_word].split()
-    current_word.each do |letter|
+      current_word_letters = words_arr[current_word_index].split("") # Get Letters
+      current_word_letters.each do |letter|
       if vowels.include? letter
-        puts "2 Here???!"
         one_vowel = 1
         break
       elsif one_vowel == 1
-          puts "Here2!"
-          puts letter
-          break
+        break
       else
-        puts "IN LOOP2!"
-        puts letter
         store_consonants.push(letter)
-        upto_delete_index = current_word.index(letter)
+        upto_delete_index = current_word_letters.index(letter)
       end
-    end
+      end
 
-    one_vowel = 0 #Reset
-    if store_consonants.empty?
-        more_words_arr2 << "ay"
-        more_words_arr2.join
-    else
-      store_consonants << "ay"
-      store_consonants.join
-      more_words_arr2 = more_words_arr2.slice(upto_delete_index+1 .. -1)
-      words_arr2 = words_arr2 + store_consonants
-      words_arr2.join
+      # Format the word #
+      if store_consonants.empty? # Nothing was added, first "if"
+        current_word_letters << "ay"
+        current_word_letters.join("") # Joining letters
+      else
+        store_consonants << "ay"
+        store_consonants.join
+        current_word_letters = current_word_letters.slice(upto_delete_index+1 .. -1)
+        current_word_letters = current_word_letters + store_consonants
+        current_word_letters.join
+      end
+      new_words_arr[current_word_index] = current_word_letters
+      current_word_index += 1 # Increment counter
+      one_vowel = 0 #Reset
+      store_consonants.clear
     end
-
-    current_word_number += 1
-  end
+    puts new_words_arr[0]
+    puts "UHHHH"
+    puts new_words_arr[1]
 
 end
 
