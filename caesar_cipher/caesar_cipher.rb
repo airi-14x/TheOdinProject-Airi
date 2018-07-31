@@ -18,18 +18,28 @@ def caesar_cipher(str, shift_index)
       #puts str[word_index][letter_index]
       current_letter = str[word_index][letter_index].ord
 
-      puts current_letter
+      # Upper case - ASCII: 65 -> 90
       if current_letter >= 65 && current_letter <= 90
-        current_letter = (current_letter + shift_index) % 90 + 64
+        if (current_letter + shift_index) / 90 >= 1 # Looping over #
+          current_letter = (current_letter + shift_index) % 90 + 64
+        else
+          current_letter = (current_letter + shift_index) % 90
+        end
+
         new_str << current_letter.chr
-        puts current_letter
+
+        # Lower case - ASCII: 97 -> 122
       elsif current_letter >= 97 && current_letter <= 122
-        current_letter = (current_letter + shift_index) % 122 + 96
+        if (current_letter + shift_index) / 122 >= 1 # Looping Over #
+          current_letter = (current_letter + shift_index) % 122 + 122
+        else
+          current_letter = (current_letter + shift_index) % 122
+        end
         new_str << current_letter.chr
-        puts current_letter
+
+        # Neither #
       else
         new_str << current_letter.chr
-        puts current_letter
       end
       letter_index += 1
     end
@@ -38,7 +48,7 @@ def caesar_cipher(str, shift_index)
     word_index += 1
     letter_index = 0 # Reset inner loop's index #
 
-    if word_index + 1 < str.length
+    if word_index < str.length
       new_str << " "
     end
   end
