@@ -4,6 +4,6 @@ Work done from the Odin Project will be found in this repository.
 - Blogger -> Completed on September 1st 2018.
 
 Currently working on:
-Updated: December 5th 2018.
+*Updated: December 5th 2018*
 - Ruby --> Intermediate Ruby
 - HTML + CSS --> Design & UX
