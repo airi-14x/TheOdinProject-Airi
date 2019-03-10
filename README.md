@@ -5,6 +5,9 @@ Work done from the Odin Project will be found in this repository.
 
 Currently working on:
 - Ruby --> Intermediate Ruby
+- Ruby on Rails
+
+Upcoming:
 - HTML + CSS --> Design & UX
 
-*Updated: December 5th 2018*
+*Updated: March 10th 2019*
